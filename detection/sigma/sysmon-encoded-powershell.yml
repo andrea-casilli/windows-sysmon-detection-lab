@@ -1,0 +1,15 @@
+title: Sysmon Encoded PowerShell Metadata
+id: 8194d8d8-3c4b-4b35-9d54-4d73d8131001
+status: experimental
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: '\\powershell.exe'
+    CommandLine|contains: '-EncodedCommand'
+  condition: selection
+tags:
+  - attack.t1059.001
+
